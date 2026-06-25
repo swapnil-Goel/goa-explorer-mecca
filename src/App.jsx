@@ -541,7 +541,7 @@ export default function App() {
   <img
     src="/mecca-logo1.png"
     alt="MECCA"
-    className="w-full max-w-[3600px] object-contain opacity-100"
+    className="w-full max-w-[4000px] object-contain opacity-100"
   />
 </div>
           </div>
