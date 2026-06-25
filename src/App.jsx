@@ -421,7 +421,7 @@ export default function App() {
   <img
     src="/mecca-logo.png"
     alt="MECCA"
-    className="h-10 w-auto object-contain"
+    className="h-9 w-auto object-contain"
   />
 
 </div>
@@ -536,6 +536,14 @@ export default function App() {
                 <Gift size={20} className="text-yellow-500" />
               </div>
             </div>
+   {/* Official MECCA Logo */}
+<div className="flex-1 flex items-center justify-center px-4 py-6">
+  <img
+    src="/mecca-logo.png"
+    alt="MECCA"
+    className="w-full max-w-[170px] object-contain opacity-95"
+  />
+</div>
           </div>
         </aside>
 
