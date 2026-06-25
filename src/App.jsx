@@ -656,7 +656,7 @@ export default function App() {
 
             {/* Arabian Sea label */}
             <div className="absolute bottom-1/3 left-4 pointer-events-none">
-              <p className="text-blue-300 text-[9px] tracking-widest opacity-60 italic transform -rotate-12" style={{ fontFamily: 'Cinzel' }}>
+              <p className="text-blue-300 text-[24px] tracking-widest opacity-60 italic transform -rotate-12" style={{ fontFamily: 'Cinzel' }}>
                 ARABIAN<br />SEA
               </p>
             </div>
