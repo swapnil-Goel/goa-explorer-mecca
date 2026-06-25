@@ -673,17 +673,35 @@ export default function App() {
               border: '2px solid rgba(251,191,36,0.4)',
               boxShadow: '0 0 20px rgba(251,191,36,0.08)',
             }}>
-            <div className="w-10 h-10 mx-auto mb-2 rounded flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #d97706, #fbbf24)' }}>
-              <span className="text-lg font-black text-yellow-900" style={{ fontFamily: 'Cinzel' }}>M</span>
-            </div>
-            <p className="gold-text text-sm font-black tracking-wider" style={{ fontFamily: 'Cinzel' }}>MECCA</p>
-            <p className="text-gray-500 text-[8px] leading-tight tracking-wider mt-0.5">THE MARKETING CLUB OF GIM</p>
+            <div
+  className="rounded-xl p-5 text-center"
+  style={{
+    background: "linear-gradient(180deg,#13213D,#0C1830)",
+    border: "1px solid rgba(251,191,36,0.25)",
+  }}
+>
 
-            {/* Compass decorative */}
-            <div className="flex justify-center mt-2">
-              <CompassRose size={30} />
-            </div>
+  <p
+    className="text-[10px] uppercase tracking-[0.35em] text-yellow-500 mb-3"
+    style={{ fontFamily: "Cinzel" }}
+  >
+    Sponsored By
+  </p>
+
+  <img
+    src="/soul-travelling-logo.png"
+    alt="Soul Travelling"
+    className="w-full max-w-[150px] mx-auto object-contain"
+  />
+
+  <p
+    className="mt-3 text-[10px] text-gray-400 tracking-wide"
+    style={{ fontFamily: "Cinzel" }}
+  >
+    Explore Goa • Discover More
+  </p>
+
+</div>
           </div>
 
           {/* About MECCA panel */}
