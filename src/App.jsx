@@ -55,7 +55,7 @@ const LOCATIONS = [
   { id: 12, name: "Miramar Beach",        x: 38.0, y: 46.5 },
   { id: 13, name: "Dona Paula Beach",     x: 27.0, y: 50.0 },
   { id: 14, name: "Majorda Beach",        x: 31.7, y: 55.8 },
-  { id: 15, name: "Colva Beach",          x: 37.5, y: 63.5 },
+  { id: 15, name: "Colva Beach",          x: 34.2, y: 59.6 },
   { id: 16, name: "Varca Beach",          x: 36.3, y: 70.0 },
   { id: 17, name: "Benaulim Beach",       x: 37.8, y: 66.0 },
   { id: 18, name: "Cabo De Rama Fort",    x: 39.8, y: 75.0 },
