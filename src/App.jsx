@@ -66,6 +66,7 @@ const LOCATIONS = [
   { id: 23, name: "Surla Waterfalls",     x: 76.5, y: 24.0 },
   { id: 24, name: "Chapora Fort",         x: 21.1, y: 32.0 },
   { id: 25, name: "Uddo Beach",          x: 31, y: 25.6 },
+  { id: 26, name: "Thalassa",          x: 32.7, y: 29.7 },
 ];
 // ═══════════════════════════════════════
 // COUPON GENERATION
