@@ -418,11 +418,29 @@ export default function App() {
         {/* MECCA Logo */}
         <div className="flex items-center min-w-0">
 
-  <img
-    src="/mecca-logo.png"
-    alt="MECCA"
-    className="h-9 w-auto object-contain"
-  />
+  <div className="leading-none select-none">
+  <h2
+    className="text-white font-bold"
+    style={{
+      fontFamily: "Cinzel",
+      fontSize: "28px",
+      letterSpacing: "0.05em",
+    }}
+  >
+    MECCA
+  </h2>
+
+  <p
+    className="text-gray-400"
+    style={{
+      fontFamily: "Cinzel",
+      fontSize: "8px",
+      letterSpacing: "0.22em",
+    }}
+  >
+    THE MARKETING CLUB OF GIM
+  </p>
+</div>
 
 </div>
 
