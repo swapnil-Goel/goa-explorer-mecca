@@ -421,7 +421,7 @@ export default function App() {
   <img
     src="/mecca-logo.png"
     alt="MECCA"
-    className="h-12 w-auto object-contain"
+    className="h-10 w-auto object-contain"
   />
 
 </div>
