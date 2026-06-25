@@ -41,18 +41,18 @@ const QUESTIONS = [
 // LOCATION DATABASE with map coordinates (% of map image)
 // ═══════════════════════════════════════
 const LOCATIONS = [
-  { id: 1,  name: "Arambol Beach",        x: 29.0, y: 9.5  },
-  { id: 2,  name: "Mandrem Beach",        x: 30.5, y: 14.0 },
-  { id: 3,  name: "Ashwem Beach",         x: 31.5, y: 18.0 },
-  { id: 4,  name: "Morjim Beach",         x: 32.5, y: 22.0 },
-  { id: 5,  name: "Vagator Beach",        x: 31.0, y: 27.5 },
-  { id: 6,  name: "Anjuna Beach",         x: 29.0, y: 32.0 },
+  { id: 1,  name: "Arambol Beach",        x: 15.2, y: 9.8  },
+  { id: 2,  name: "Mandrem Beach",        x: 23.3, y: 13.7 },
+  { id: 3,  name: "Ashwem Beach",         x: 23.8, y: 20.0 },
+  { id: 4,  name: "Morjim Beach",         x: 20.6, y: 26.5 },
+  { id: 5,  name: "Vagator Beach",        x: 15.5, y: 30.9 },
+  { id: 6,  name: "Anjuna Beach",         x: 23.6, y: 34.0 },
   { id: 7,  name: "Baga Beach",           x: 28.0, y: 36.0 },
-  { id: 8,  name: "Calangute Beach",      x: 27.0, y: 39.5 },
+  { id: 8,  name: "Calangute Beach",      x: 17.7, y: 40.3 },
   { id: 9,  name: "Candolim Beach",       x: 26.0, y: 43.5 },
   { id: 10, name: "Panjim",               x: 46.0, y: 36.5 },
   { id: 11, name: "Fontainhas",           x: 48.5, y: 38.5 },
-  { id: 12, name: "Miramar Beach",        x: 28.5, y: 46.5 },
+  { id: 12, name: "Miramar Beach",        x: 38.0, y: 46.5 },
   { id: 13, name: "Dona Paula Beach",     x: 27.0, y: 50.0 },
   { id: 14, name: "Majorda Beach",        x: 27.5, y: 59.5 },
   { id: 15, name: "Colva Beach",          x: 26.5, y: 63.5 },
@@ -64,7 +64,7 @@ const LOCATIONS = [
   { id: 21, name: "Dudhsagar Waterfalls", x: 78.0, y: 52.0 },
   { id: 22, name: "Harvalem Waterfalls",  x: 70.0, y: 17.5 },
   { id: 23, name: "Surla Waterfalls",     x: 76.5, y: 24.0 },
-  { id: 24, name: "Chapora Fort",         x: 33.5, y: 24.5 },
+  { id: 24, name: "Chapora Fort",         x: 21.1, y: 32.0 },
 ];
 // ═══════════════════════════════════════
 // COUPON GENERATION
