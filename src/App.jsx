@@ -416,16 +416,15 @@ export default function App() {
         style={{ background: 'linear-gradient(180deg, rgba(3,8,16,0.98) 0%, rgba(3,8,16,0.85) 100%)', borderBottom: '1px solid rgba(251,191,36,0.2)' }}>
 
         {/* MECCA Logo */}
-        <div className="flex items-center gap-2 min-w-0">
-          <div className="w-7 h-7 flex items-center justify-center rounded"
-            style={{ background: 'linear-gradient(135deg, #d97706, #fbbf24)', border: '1px solid #fde68a' }}>
-            <span className="text-xs font-black text-yellow-900" style={{ fontFamily: 'Cinzel' }}>M</span>
-          </div>
-          <div className="hidden sm:block">
-            <p className="text-yellow-400 font-bold text-xs leading-none" style={{ fontFamily: 'Cinzel' }}>MECCA</p>
-            <p className="text-gray-500 text-[8px] leading-none tracking-wider">THE MARKETING CLUB OF GIM</p>
-          </div>
-        </div>
+        <div className="flex items-center min-w-0">
+
+  <img
+    src="/mecca-logo.png"
+    alt="MECCA"
+    className="h-12 w-auto object-contain"
+  />
+
+</div>
 
         {/* Title */}
         <div className="text-center absolute left-1/2 transform -translate-x-1/2">
