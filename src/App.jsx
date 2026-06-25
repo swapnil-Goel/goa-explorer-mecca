@@ -540,15 +540,35 @@ export default function App() {
 
         {/* ─── CENTER MAP ─── */}
         <main className="flex-1 h-full relative overflow-hidden mx-1"
-          style={{ minWidth: 0 }}>
+  style={{ minWidth: 0 }}>
 
-          {/* Map container */}
-          <div ref={mapRef} className="w-full h-full relative rounded-lg overflow-hidden"
-            style={{
-              border: '1px solid rgba(251,191,36,0.3)',
-              boxShadow: '0 0 40px rgba(0,0,0,0.6)',
-            }}>
+  {/* Map container */}
+  <div
+    ref={mapRef}
+    className="w-full h-full relative rounded-lg overflow-hidden"
+    style={{
+      border: '1px solid rgba(251,191,36,0.3)',
+      boxShadow: '0 0 40px rgba(0,0,0,0.6)',
+    }}
 
+    onClick={(e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+
+      const x = (
+        ((e.clientX - rect.left) / rect.width) * 100
+      ).toFixed(1);
+
+      const y = (
+        ((e.clientY - rect.top) / rect.height) * 100
+      ).toFixed(1);
+
+      console.clear();
+      console.log("========================");
+      console.log(`x: ${x}`);
+      console.log(`y: ${y}`);
+      console.log("========================");
+    }}
+  >
             {/* Map image */}
             <img
               src="/goa-map.png"
