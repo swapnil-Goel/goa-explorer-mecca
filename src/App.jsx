@@ -166,7 +166,7 @@ const HowToPlayModal = ({ onClose }) => (
         { n: "01", t: "Read the Question", d: "A Goa-related question appears on the left panel. Read it carefully." },
         { n: "02", t: "Find the Location", d: "Identify the correct place on the Goa map based on the question." },
         { n: "03", t: "Click the Marker", d: "Click the golden marker on the map that matches your answer." },
-        { n: "04", t: "Unlock Your Coupon", d: "If correct, you'll receive an exclusive SOUL coupon! Wrong? Keep exploring." },
+        { n: "04", t: "Unlock Your Coupon", d: "Answer 3 in a row correctly to unlock an exclusive SOUL coupon! Wrong? Your streak resets." },
       ].map(s => (
         <div key={s.n} className="flex gap-3 items-start">
           <span className="text-2xl font-black text-yellow-500 opacity-60 leading-none" style={{ fontFamily: 'Cinzel' }}>{s.n}</span>
@@ -179,7 +179,7 @@ const HowToPlayModal = ({ onClose }) => (
     </div>
     <div className="mt-4 p-3 rounded" style={{ background: 'rgba(251,191,36,0.08)', border: '1px solid rgba(251,191,36,0.2)' }}>
       <p className="text-yellow-400 text-xs text-center" style={{ fontFamily: 'Cinzel' }}>
-        ✦ Each correct answer unlocks 1 exclusive reward ✦
+        ✦ Answer 3 in a row to unlock 1 exclusive reward ✦
       </p>
     </div>
   </ModalWrapper>
@@ -346,7 +346,7 @@ const AnimatedCounter = ({ target, duration = 1500 }) => {
 export default function App() {
   const [question, setQuestion] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [questionsSolved, setQuestionsSolved] = useState(1);
+  const [currentStreak, setCurrentStreak] = useState(0);
   const [couponsUnlocked, setCouponsUnlocked] = useState(1);
   const [shakingId, setShakingId] = useState(null);
   const [correctId, setCorrectId] = useState(null);
@@ -379,18 +379,33 @@ export default function App() {
     if (successModal || !question) return;
     const isCorrect = location.name === question.answer;
     if (isCorrect) {
-      const code = generateCoupon();
-      setCouponCode(code);
+      const newStreak = currentStreak + 1;
       setCorrectId(location.id);
-      setSuccessModal(location);
-      setQuestionsSolved(p => p + 1);
-      setCouponsUnlocked(p => p + 1);
+      if (newStreak >= 3) {
+        // Streak complete — generate coupon, show modal, reset streak
+        const code = generateCoupon();
+        setCouponCode(code);
+        setSuccessModal(location);
+        setCouponsUnlocked(p => p + 1);
+        setCurrentStreak(0);
+      } else {
+        // Streak building — update streak and load next question automatically
+        setCurrentStreak(newStreak);
+        setTimeout(() => {
+          pickQuestion(questionIndex);
+        }, 400);
+      }
     } else {
+      // Wrong answer — reset streak, shake marker, load next question
+      setCurrentStreak(0);
       setWrongId(location.id);
       setShakingId(location.id);
       showToast("Not quite, Explorer. Try another location!");
       setTimeout(() => setShakingId(null), 600);
-      setTimeout(() => setWrongId(null), 1200);
+      setTimeout(() => {
+        setWrongId(null);
+        pickQuestion(questionIndex);
+      }, 1200);
     }
   };
 
@@ -535,9 +550,9 @@ export default function App() {
             {/* Stats grid */}
             <div className="grid grid-cols-2 gap-2">
               <div className="stat-card">
-                <p className="text-[8px] tracking-widest text-gray-500 mb-1" style={{ fontFamily: 'Cinzel' }}>QUESTIONS SOLVED</p>
+                <p className="text-[8px] tracking-widest text-gray-500 mb-1" style={{ fontFamily: 'Cinzel' }}>CURRENT STREAK</p>
                 <p className="text-2xl font-black gold-text" style={{ fontFamily: 'Cinzel' }}>
-                  {String(questionsSolved).padStart(2, '0')}
+                  {currentStreak} / 3
                 </p>
               </div>
               <div className="stat-card">
