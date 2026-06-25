@@ -537,11 +537,11 @@ export default function App() {
               </div>
             </div>
    {/* Official MECCA Logo */}
-<div className="flex-1 flex items-center justify-center px-4 py-6">
+<div className="flex-1 flex items-center justify-center px-6 py-8">
   <img
     src="/mecca-logo1.png"
     alt="MECCA"
-    className="w-full max-w-[170px] object-contain opacity-95"
+    className="w-full max-w-[170px] object-contain opacity-100"
   />
 </div>
           </div>
