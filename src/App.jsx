@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Trophy, HelpCircle, Users, Map, Compass, Star, Gift, X, ChevronRight, Lightbulb, PenTool, Award, UserCheck } from 'lucide-react';
+import AuthGate from './components/AuthGate';
 
 // ═══════════════════════════════════════
 // QUESTION BANK
@@ -415,6 +416,7 @@ export default function App() {
   };
 
   return (
+    <AuthGate>
     <div className="w-screen h-screen overflow-hidden relative select-none"
       style={{ background: 'radial-gradient(ellipse at 20% 50%, #0a1628 0%, #050d1a 50%, #030810 100%)' }}>
 
@@ -832,5 +834,6 @@ export default function App() {
       {/* Toast */}
       <Toast message={toast.message} visible={toast.visible} />
     </div>
+    </AuthGate>
   );
 }
