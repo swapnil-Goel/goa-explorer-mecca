@@ -11,6 +11,14 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { supabase } from "../lib/supabase";
 
 // ─────────────────────────────────────────────
+// Admin Access Control
+// ─────────────────────────────────────────────
+
+const ADMIN_EMAILS = [
+  "swapnil.goel25@gim.ac.in",
+];
+
+// ─────────────────────────────────────────────
 // Helpers
 // ─────────────────────────────────────────────
 
