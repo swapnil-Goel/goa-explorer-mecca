@@ -348,6 +348,18 @@ const AnimatedCounter = ({ target, duration = 1500 }) => {
 const UserProfile = ({ userName, userEmail, onLogout }) => {
   const [open, setOpen] = React.useState(false);
 
+  React.useEffect(() => {
+    const closeMenu = () => setOpen(false);
+
+    if (open) {
+      document.addEventListener("click", closeMenu);
+    }
+
+    return () => {
+      document.removeEventListener("click", closeMenu);
+    };
+  }, [open]);
+
   const initials = userName
     .split(" ")
     .map((w) => w[0])
@@ -358,8 +370,10 @@ const UserProfile = ({ userName, userEmail, onLogout }) => {
   return (
     <div
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onClick={(e) => {
+        e.stopPropagation();
+        setOpen(!open);
+      }}
       style={{
         borderLeft: "1px solid rgba(251,191,36,0.2)",
         paddingLeft: "12px",
@@ -411,9 +425,10 @@ const UserProfile = ({ userName, userEmail, onLogout }) => {
 
       {/* Dropdown */}
       <div
+         onClick={(e) => e.stopPropagation()}
         style={{
           position: "absolute",
-          top: "42px",
+          top: "38px",
           right: 0,
           width: "260px",
           opacity: open ? 1 : 0,
@@ -421,7 +436,7 @@ const UserProfile = ({ userName, userEmail, onLogout }) => {
             ? "translateY(0px)"
             : "translateY(-8px)",
           pointerEvents: open ? "auto" : "none",
-          transition: "all .25s ease",
+          transition: "opacity .2s ease, transform .2s ease",
           zIndex: 9999,
 
           background:
