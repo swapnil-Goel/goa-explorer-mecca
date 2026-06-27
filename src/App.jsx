@@ -344,7 +344,7 @@ const AnimatedCounter = ({ target, duration = 1500 }) => {
 // ═══════════════════════════════════════
 // MAIN APP
 // ═══════════════════════════════════════
-export default function App() {
+export default function App({ session }) {
   const [question, setQuestion] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [currentStreak, setCurrentStreak] = useState(0);
