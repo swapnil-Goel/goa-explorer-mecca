@@ -495,7 +495,7 @@ export default function LoginScreen() {
             marginBottom: 10,
           }}
         >
-          {!loading && <GoogleIcon />}
+          {!loading && <MicrosoftIcon />}
           <span style={{
             fontFamily: "'Cinzel', serif",
             fontSize: 11,
