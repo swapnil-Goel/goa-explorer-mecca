@@ -345,6 +345,17 @@ const AnimatedCounter = ({ target, duration = 1500 }) => {
 // MAIN APP
 // ═══════════════════════════════════════
 export default function App({ session }) {
+  const user = session?.user;
+
+const userName =
+  user?.user_metadata?.name ||
+  user?.user_metadata?.display_name ||
+  user?.user_metadata?.full_name ||
+  user?.email?.split('@')[0] ||
+  'Explorer';
+
+const userEmail = user?.email || '';
+const userAvatar = user?.user_metadata?.avatar_url || null;
   const [question, setQuestion] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [currentStreak, setCurrentStreak] = useState(0);
