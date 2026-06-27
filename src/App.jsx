@@ -1123,7 +1123,7 @@ const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
             <div>
               <p className="text-gray-500 text-[8px] tracking-widest" style={{ fontFamily: 'Cinzel' }}>EXPLORERS TODAY</p>
               <p className="gold-text font-black text-xl leading-none" style={{ fontFamily: 'Cinzel' }}>
-                <AnimatedCounter target={1247} duration={1800} />
+                <AnimatedCounter target={couponGeneratedCount} duration={1800} />
               </p>
             </div>
           </div>
@@ -1138,9 +1138,9 @@ const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
               <Gift size={16} className="text-yellow-400" />
             </div>
             <div>
-              <p className="text-gray-500 text-[8px] tracking-widest" style={{ fontFamily: 'Cinzel' }}>COUPONS UNLOCKED</p>
+              <p className="text-gray-500 text-[8px] tracking-widest" style={{ fontFamily: 'Cinzel' }}>COUPONS Remaining</p>
               <p className="gold-text font-black text-xl leading-none" style={{ fontFamily: 'Cinzel' }}>
-                <AnimatedCounter target={582} duration={1500} />
+                <AnimatedCounter target={couponRemainingCount} duration={1800} />
               </p>
             </div>
           </div>
