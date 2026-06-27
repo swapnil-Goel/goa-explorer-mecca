@@ -537,11 +537,11 @@ export default function LoginScreen() {
     zIndex: 9999,
     pointerEvents: "none",
     fontFamily: "Cinzel",
-    fontSize: "9px",
+    fontSize: "11px",
     letterSpacing: "0.28em",
     textTransform: "uppercase",
     color: "rgba(212,175,55,0.32)",
-    opacity: 0.8,
+    opacity: 1,
     userSelect: "none",
   }}
 >
