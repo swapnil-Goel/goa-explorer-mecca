@@ -520,7 +520,7 @@ const userEmail = user?.email || '';
   };
 
   return (
-    <AuthGate>
+    
     <div className="w-screen h-screen overflow-hidden relative select-none"
       style={{ background: 'radial-gradient(ellipse at 20% 50%, #0a1628 0%, #050d1a 50%, #030810 100%)' }}>
 
@@ -943,6 +943,5 @@ const userEmail = user?.email || '';
       {/* Toast */}
       <Toast message={toast.message} visible={toast.visible} />
     </div>
-    </AuthGate>
   );
 }
