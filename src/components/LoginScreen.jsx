@@ -29,7 +29,7 @@ const STYLE = `
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background-image: url('/login-bg.jpg');
+    background-image: url('/login-bg.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
