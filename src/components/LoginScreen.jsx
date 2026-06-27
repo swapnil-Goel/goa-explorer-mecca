@@ -175,19 +175,6 @@ export default function LoginScreen() {
           />
         </div>
 
-        {/* THE MARKETING CLUB OF GIM */}
-        <p className="gex-s1" style={{
-          fontFamily: "'Cinzel', serif",
-          fontSize: 10,
-          letterSpacing: '0.28em',
-          color: WHITE_HI,
-          textTransform: 'uppercase',
-          textAlign: 'center',
-          marginBottom: 14,
-        }}>
-          THE MARKETING CLUB OF GIM
-        </p>
-
         {/* ── THE OLDEST CLUB OF GIM rule ── */}
         <div className="gex-s2" style={{
           display: 'flex', alignItems: 'center', gap: 10,
@@ -195,8 +182,8 @@ export default function LoginScreen() {
         }}>
           <div style={{ flex: 1, height: '1px', background: `linear-gradient(90deg, transparent, ${GOLD_MID})` }}/>
           <span style={{
-            fontFamily: "'Cinzel', serif", fontSize: 8,
-            letterSpacing: '0.32em', color: GOLD_DIM,
+            fontFamily: "'Cinzel', serif", fontSize: 10,
+            letterSpacing: '0.32em', color: GOLD,
             textTransform: 'uppercase', whiteSpace: 'nowrap',
           }}>THE OLDEST CLUB OF GIM</span>
           <div style={{ flex: 1, height: '1px', background: `linear-gradient(90deg, ${GOLD_MID}, transparent)` }}/>
