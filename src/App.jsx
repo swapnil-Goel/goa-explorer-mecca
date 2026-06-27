@@ -76,7 +76,7 @@ const LOCATIONS = [
 const generateCoupon = () => {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   let code = 'SOUL-';
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 3; i++) {
     code += chars[Math.floor(Math.random() * chars.length)];
   }
   return code;
@@ -650,36 +650,59 @@ const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
         // Streak complete
 
 (async () => {
+  try {
+    console.log("===== START COUPON FLOW =====");
 
-  if (couponRemainingCount <= 0) {
-    showToast("All coupons have already been claimed.");
+    if (couponRemainingCount <= 0) {
+      showToast("All coupons have already been claimed.");
+      setCurrentStreak(0);
+      return;
+    }
+
+    console.log("Checking existing coupon...");
+
+    const alreadyClaimed = await hasAlreadyReceivedCoupon(userEmail);
+
+    console.log("Already claimed:", alreadyClaimed);
+
+    if (alreadyClaimed) {
+      showToast("You have already claimed your coupon.");
+      setCurrentStreak(0);
+      return;
+    }
+
+    const code = generateCoupon();
+
+    console.log("Generated code:", code);
+
+    await saveCoupon(userEmail, code);
+
+    console.log("Saved successfully");
+
+    const status = await getCouponStatus();
+
+    console.log("Status:", status);
+
+    setCouponGeneratedCount(status.generated);
+    setCouponRemainingCount(status.remaining);
+
+    setCouponCode(code);
+    setSuccessModal(location);
+
+    setCouponsUnlocked((p) => p + 1);
     setCurrentStreak(0);
-    return;
+
+    console.log("===== SUCCESS =====");
+  } catch (err) {
+    console.error("===== COUPON ERROR =====");
+    console.error(err);
+    console.error("message:", err?.message);
+    console.error("details:", err?.details);
+    console.error("hint:", err?.hint);
+    console.error("code:", err?.code);
+
+    showToast(err?.message || "Coupon generation failed.");
   }
-
-  const alreadyClaimed = await hasAlreadyReceivedCoupon(userEmail);
-
-  if (alreadyClaimed) {
-    showToast("You have already claimed your coupon.");
-    setCurrentStreak(0);
-    return;
-  }
-
-  const code = generateCoupon();
-
-  await saveCoupon(userEmail, code);
-
-  const status = await getCouponStatus();
-
-  setCouponGeneratedCount(status.generated);
-  setCouponRemainingCount(status.remaining);
-
-  setCouponCode(code);
-  setSuccessModal(location);
-
-  setCouponsUnlocked((p) => p + 1);
-  setCurrentStreak(0);
-
 })();
       } else {
         // Streak building — update streak and load next question automatically
