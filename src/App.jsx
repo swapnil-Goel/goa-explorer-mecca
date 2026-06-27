@@ -101,6 +101,16 @@ const hasAlreadyReceivedCoupon = async (email) => {
 };
 
 const getCouponStatus = async () => {
+  // Get total coupons from settings table
+  const { data: settings, error: settingsError } = await supabase
+    .from("settings")
+    .select("total_coupons")
+    .eq("id", 1)
+    .single();
+
+  if (settingsError) throw settingsError;
+
+  // Count generated coupons
   const { count, error } = await supabase
     .from("coupons")
     .select("*", {
@@ -110,9 +120,13 @@ const getCouponStatus = async () => {
 
   if (error) throw error;
 
+  const totalCoupons = settings.total_coupons || 600;
+  const generatedCoupons = count || 0;
+
   return {
-    generated: count || 0,
-    remaining: TOTAL_COUPONS - (count || 0),
+    generated: generatedCoupons,
+    remaining: Math.max(totalCoupons - generatedCoupons, 0),
+    total: totalCoupons,
   };
 };
 
