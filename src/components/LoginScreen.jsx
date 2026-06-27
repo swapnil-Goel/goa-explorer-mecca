@@ -22,11 +22,14 @@ export default function LoginScreen() {
     setLoading(true);
     setError(null);
     const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'azure',
-      options: {
-        redirectTo: window.location.origin,
-      },
-    });
+  provider: 'azure',
+  options: {
+    redirectTo: window.location.origin,
+    queryParams: {
+      prompt: 'select_account',
+    },
+  },
+});
     if (error) {
       setError(error.message);
       setLoading(false);
