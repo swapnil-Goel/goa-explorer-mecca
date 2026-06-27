@@ -111,5 +111,5 @@ export default function AuthGate({ children }) {
   }
 
   // Valid GIM session — render the app
-  return children;
+  return React.cloneElement(children, { session });
 }
