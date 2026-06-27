@@ -648,10 +648,11 @@ const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
   useEffect(() => {
   pickQuestion();
 
-  getCouponStatus().then((status) => {
-    setCouponGeneratedCount(status.generated);
-    setCouponRemainingCount(status.remaining);
-  });
+ getCouponStatus().then((status) => {
+  setCouponGeneratedCount(status.generated);
+  setCouponRemainingCount(status.remaining);
+  setTotalCoupons(status.total);
+});
 }, []);
 
   const showToast = (msg) => {
@@ -673,7 +674,7 @@ const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
     console.log("===== START COUPON FLOW =====");
 
     if (couponRemainingCount <= 0) {
-      showToast("All coupons have already been claimed.");
+      showToast(`All ${totalCoupons} coupons have already been claimed.`);
       setCurrentStreak(0);
       return;
     }
@@ -697,13 +698,11 @@ const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
     await saveCoupon(user, code);
 
     console.log("Saved successfully");
+const status = await getCouponStatus();
 
-    const status = await getCouponStatus();
-
-    console.log("Status:", status);
-
-    setCouponGeneratedCount(status.generated);
-    setCouponRemainingCount(status.remaining);
+setCouponGeneratedCount(status.generated);
+setCouponRemainingCount(status.remaining);
+setTotalCoupons(status.total);
 
     setCouponCode(code);
     setSuccessModal(location);
