@@ -231,8 +231,8 @@ export default function LoginScreen() {
         {/* ── BIG HERO TITLE: GOA EXPLORER ── */}
         <h2 className="gex-s3" style={{
           fontFamily: "'Cinzel', serif",
-          fontSize: 'clamp(44px, 9vw, 80px)',
-          fontWeight: 200,
+          fontSize: 'clamp(32px, 7vw, 60px)',
+          fontWeight: 150,
           letterSpacing: '0.18em',
           ...goldText,
           textAlign: 'center',
@@ -295,7 +295,7 @@ export default function LoginScreen() {
           {/* Welcome Back */}
           <p style={{
             fontFamily: "'Cinzel', serif",
-            fontSize: 'clamp(16px, 2.2vw, 20px)',
+            fontSize: 'clamp(18px, 2.4vw, 22px)',
             fontWeight: 600,
             letterSpacing: '0.12em',
             color: WHITE_HI,
@@ -307,7 +307,7 @@ export default function LoginScreen() {
 
           <p style={{
             fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontSize: 13,
+            fontSize: 15,
             fontWeight: 300,
             letterSpacing: '0.04em',
             color: WHITE_MID,
@@ -379,7 +379,7 @@ export default function LoginScreen() {
             </svg>
             <p style={{
               fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: 300,
               fontStyle: 'italic',
               color: 'rgba(180,165,130,0.6)',
@@ -387,7 +387,7 @@ export default function LoginScreen() {
               lineHeight: 1.65,
             }}>
               Exclusively for GIM Goa students<br/>
-              <span style={{ fontSize: 12, letterSpacing: '0.06em' }}>@gim.ac.in accounts only</span>
+              <span style={{ fontSize: 14, letterSpacing: '0.06em' }}>@gim.ac.in accounts only</span>
             </p>
           </div>
 
@@ -416,7 +416,7 @@ export default function LoginScreen() {
         position: 'fixed', right: 22, bottom: 16,
         zIndex: 9999, pointerEvents: 'none', userSelect: 'none',
         fontFamily: "'Cinzel', serif",
-        fontSize: 9, fontWeight: 600,
+        fontSize: 11, fontWeight: 600,
         letterSpacing: '0.22em', textTransform: 'uppercase',
         ...goldText, opacity: 0.82,
       }}>
