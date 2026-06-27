@@ -1,14 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
-import App from './App';
-import AuthGate from './components/AuthGate';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+import App from "./App";
+import Admin from "./pages/Admin";
+import AuthGate from "./components/AuthGate";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthGate>
-      <App />
-    </AuthGate>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <AuthGate>
+              <App />
+            </AuthGate>
+          }
+        />
+
+        <Route
+          path="/admin"
+          element={
+            <AuthGate>
+              <Admin />
+            </AuthGate>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
