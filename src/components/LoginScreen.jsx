@@ -232,7 +232,7 @@ export default function LoginScreen() {
         <h2 className="gex-s3" style={{
           fontFamily: "'Cinzel', serif",
           fontSize: 'clamp(44px, 9vw, 80px)',
-          fontWeight: 700,
+          fontWeight: 350,
           letterSpacing: '0.18em',
           ...goldText,
           textAlign: 'center',
