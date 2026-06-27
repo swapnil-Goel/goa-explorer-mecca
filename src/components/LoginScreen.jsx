@@ -2,18 +2,41 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 
 /* ─────────────────────────────────────────────
-  {/* MECCA Logo */}
-<div className="mb-6 flex justify-center">
-  <img
-    src="/mecca-logo1.png"
-    alt="MECCA Logo"
-    className="w-28 h-28 lg:w-32 lg:h-32 object-contain transition-transform duration-500 hover:scale-105"
-    style={{
-      filter:
-        "drop-shadow(0 0 20px rgba(212,175,55,0.28)) drop-shadow(0 0 12px rgba(220,38,38,0.20))",
-    }}
-  />
-</div>
+  MECCA Logo (inline SVG — matches red-burst
+   logo mark in the reference image)
+───────────────────────────────────────────── */
+const MeccaLogo = () => (
+  <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Outer ring */}
+    <circle cx="36" cy="36" r="34" stroke="#C9A84C" strokeWidth="0.6" strokeDasharray="3 3" opacity="0.4" />
+    {/* Burst petals */}
+    {Array.from({ length: 16 }).map((_, i) => {
+      const angle = (i * 360) / 16;
+      const rad = (angle * Math.PI) / 180;
+      const x1 = 36 + 12 * Math.cos(rad);
+      const y1 = 36 + 12 * Math.sin(rad);
+      const x2 = 36 + 28 * Math.cos(rad);
+      const y2 = 36 + 28 * Math.sin(rad);
+      const isLong = i % 2 === 0;
+      return (
+        <line
+          key={i}
+          x1={x1} y1={y1}
+          x2={isLong ? x2 : 36 + 21 * Math.cos(rad)}
+          y2={isLong ? y2 : 36 + 21 * Math.sin(rad)}
+          stroke={isLong ? '#C0392B' : '#E74C3C'}
+          strokeWidth={isLong ? 2.2 : 1.4}
+          strokeLinecap="round"
+          opacity={isLong ? 1 : 0.7}
+        />
+      );
+    })}
+    {/* Center dot */}
+    <circle cx="36" cy="36" r="5" fill="#C9A84C" opacity="0.9" />
+    <circle cx="36" cy="36" r="2.5" fill="#fff" opacity="0.85" />
+  </svg>
+);
+
 /* ─────────────────────────────────────────────
    Inline keyframes injected once
 ───────────────────────────────────────────── */
