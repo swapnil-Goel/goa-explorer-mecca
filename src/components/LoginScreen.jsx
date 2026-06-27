@@ -167,12 +167,17 @@ export default function LoginScreen() {
 
         {/* ── MECCA logo image ── */}
         <div className="gex-s1" style={{ marginBottom: 10 }}>
-          <img
-            src="/mecca-logo1.png"
-            alt="MECCA"
-            style={{ width: 80, height: 'auto', objectFit: 'contain',
-              filter: 'drop-shadow(0 0 36px rgba(212,175,55,0.35))' }}
-          />
+         <img
+  src="/mecca-logo1.png"
+  alt="MECCA"
+  className="mx-auto mb-4"
+  style={{
+    width: "150px",
+    height: "auto",
+    filter:
+      "drop-shadow(0 0 20px rgba(212,175,55,.18))",
+  }}
+/>
         </div>
 
         {/* ── THE OLDEST CLUB OF GIM rule ── */}
