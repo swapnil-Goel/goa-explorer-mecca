@@ -82,21 +82,49 @@ const generateCoupon = () => {
   return code;
 };
 // ═══════════════════════════════════════
+// ═══════════════════════════════════════
 // COUPON DATABASE HELPERS
 // ═══════════════════════════════════════
 
 const TOTAL_COUPONS = 600;
 
 const hasAlreadyReceivedCoupon = async (email) => {
-  ...
+  const { data, error } = await supabase
+    .from("coupon_claims")
+    .select("id")
+    .eq("email", email)
+    .maybeSingle();
+
+  if (error) throw error;
+
+  return !!data;
 };
 
 const getCouponStatus = async () => {
-  ...
+  const { count, error } = await supabase
+    .from("coupon_claims")
+    .select("*", {
+      count: "exact",
+      head: true,
+    });
+
+  if (error) throw error;
+
+  return {
+    generated: count || 0,
+    remaining: TOTAL_COUPONS - (count || 0),
+  };
 };
 
 const saveCoupon = async (email, coupon) => {
-  ...
+  const { error } = await supabase
+    .from("coupon_claims")
+    .insert({
+      email,
+      coupon_code: coupon,
+    });
+
+  if (error) throw error;
 };
 // ═══════════════════════════════════════
 // SVG COMPASS ROSE (decorative)
