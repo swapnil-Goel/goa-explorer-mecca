@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Trophy, HelpCircle, Users, Map, Compass, Star, Gift, X, ChevronRight, Lightbulb, PenTool, Award, UserCheck } from 'lucide-react';
+import { Trophy, HelpCircle, Users, Map, Compass, Star, Gift, X, ChevronRight, Lightbulb, PenTool, Award, UserCheck, LogOut } from 'lucide-react';
 import AuthGate from './components/AuthGate';
+import { supabase } from './lib/supabase';
 
 // ═══════════════════════════════════════
 // QUESTION BANK
@@ -342,6 +343,91 @@ const AnimatedCounter = ({ target, duration = 1500 }) => {
 };
 
 // ═══════════════════════════════════════
+// USER PROFILE (nav bar)
+// ═══════════════════════════════════════
+const UserProfile = ({ userName, userEmail, onLogout }) => {
+  const initials = userName
+    .split(' ')
+    .map(w => w[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2);
+
+  return (
+    <div
+      className="flex items-center gap-2 pl-3"
+      style={{
+        borderLeft: '1px solid rgba(251,191,36,0.2)',
+      }}
+    >
+      {/* Avatar */}
+      <div
+        className="flex-none flex items-center justify-center rounded-full"
+        style={{
+          width: '30px',
+          height: '30px',
+          background: 'linear-gradient(135deg, rgba(251,191,36,0.25), rgba(217,119,6,0.15))',
+          border: '1px solid rgba(251,191,36,0.5)',
+          flexShrink: 0,
+        }}
+      >
+        <span
+          className="font-black gold-text"
+          style={{ fontFamily: 'Cinzel', fontSize: '10px', letterSpacing: '0.05em' }}
+        >
+          {initials}
+        </span>
+      </div>
+
+      {/* Name + Email */}
+      <div className="flex flex-col leading-none" style={{ minWidth: 0 }}>
+        <span
+          className="gold-text font-bold truncate"
+          style={{ fontFamily: 'Cinzel', fontSize: '10px', letterSpacing: '0.08em', maxWidth: '110px' }}
+          title={userName}
+        >
+          {userName}
+        </span>
+        <span
+          className="text-gray-500 truncate mt-0.5"
+          style={{ fontFamily: 'Cinzel', fontSize: '8px', letterSpacing: '0.04em', maxWidth: '110px' }}
+          title={userEmail}
+        >
+          {userEmail}
+        </span>
+      </div>
+
+      {/* Logout button */}
+      <button
+        onClick={onLogout}
+        className="flex-none flex items-center gap-1 px-2 py-1 rounded transition-colors"
+        style={{
+          background: 'rgba(251,191,36,0.08)',
+          border: '1px solid rgba(251,191,36,0.25)',
+          color: '#d97706',
+          fontFamily: 'Cinzel',
+          fontSize: '8px',
+          letterSpacing: '0.1em',
+          flexShrink: 0,
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.background = 'rgba(251,191,36,0.18)';
+          e.currentTarget.style.color = '#fbbf24';
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.background = 'rgba(251,191,36,0.08)';
+          e.currentTarget.style.color = '#d97706';
+        }}
+        title="Sign out"
+      >
+        <LogOut size={10} />
+        <span>LOGOUT</span>
+      </button>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════
 // MAIN APP
 // ═══════════════════════════════════════
 export default function App({ session }) {
@@ -426,6 +512,10 @@ const userAvatar = user?.user_metadata?.avatar_url || null;
     pickQuestion(questionIndex);
   };
 
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+  };
+
   return (
     <AuthGate>
     <div className="w-screen h-screen overflow-hidden relative select-none"
@@ -480,7 +570,7 @@ const userAvatar = user?.user_metadata?.avatar_url || null;
           <p className="text-yellow-600 text-[9px] tracking-widest" style={{ fontFamily: 'Cinzel' }}>FIND THE PLACE. UNLOCK THE REWARD.</p>
         </div>
 
-        {/* Nav buttons */}
+        {/* Nav buttons + User Profile */}
         <div className="flex items-center gap-2">
           <button className="nav-btn" onClick={() => setModal('leaderboard')}>
             <Trophy size={14} />
@@ -494,6 +584,11 @@ const userAvatar = user?.user_metadata?.avatar_url || null;
             <Users size={14} />
             <span>ABOUT MECCA</span>
           </button>
+          <UserProfile
+            userName={userName}
+            userEmail={userEmail}
+            onLogout={handleLogout}
+          />
         </div>
       </header>
 
