@@ -171,7 +171,7 @@ export default function LoginScreen() {
             src="/mecca-logo1.png"
             alt="MECCA"
             style={{ width: 80, height: 'auto', objectFit: 'contain',
-              filter: 'drop-shadow(0 0 12px rgba(212,175,55,0.35))' }}
+              filter: 'drop-shadow(0 0 36px rgba(212,175,55,0.35))' }}
           />
         </div>
 
