@@ -172,7 +172,7 @@ export default function LoginScreen() {
   alt="MECCA"
   className="mx-auto mb-4"
   style={{
-    width: "250px",
+    width: "300px",
     height: "auto",
     filter:
       "drop-shadow(0 0 20px rgba(212,175,55,.18))",
@@ -187,7 +187,7 @@ export default function LoginScreen() {
         }}>
           <div style={{ flex: 1, height: '1px', background: `linear-gradient(90deg, transparent, ${GOLD_MID})` }}/>
           <span style={{
-            fontFamily: "'Cinzel', serif", fontSize: 10,
+            fontFamily: "'Cinzel', serif", fontSize: 12,
             letterSpacing: '0.32em', color: GOLD,
             textTransform: 'uppercase', whiteSpace: 'nowrap',
           }}>THE OLDEST CLUB OF GIM</span>
@@ -210,7 +210,7 @@ export default function LoginScreen() {
         {/* 1999 → ∞ */}
         <div className="gex-s2" style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          gap: 10, marginBottom: 30,
+          gap: 10, marginBottom: 15,
         }}>
           <span style={{
             fontFamily: "'Cormorant Garamond', Georgia, serif",
@@ -232,7 +232,7 @@ export default function LoginScreen() {
         <h2 className="gex-s3" style={{
           fontFamily: "'Cinzel', serif",
           fontSize: 'clamp(44px, 9vw, 80px)',
-          fontWeight: 350,
+          fontWeight: 200,
           letterSpacing: '0.18em',
           ...goldText,
           textAlign: 'center',
@@ -240,7 +240,7 @@ export default function LoginScreen() {
           marginBottom: 16,
           textShadow: '0 4px 40px rgba(212,175,55,0.25)',
         }}>
-          GOA EXPLORER
+          MECCA Welcomes You
         </h2>
 
         {/* EXPLORE. COMPETE. LEAD. */}
@@ -265,19 +265,6 @@ export default function LoginScreen() {
           <div className="gex-shimmer" style={{ width: 80, height: '1px' }}/>
           <div style={{ flex: 1, height: '1px', background: `linear-gradient(90deg, ${GOLD_LOW}, transparent)` }}/>
         </div>
-
-        {/* Italic tagline */}
-        <p className="gex-s3" style={{
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
-          fontSize: 'clamp(13px, 1.8vw, 16px)',
-          fontStyle: 'italic',
-          letterSpacing: '0.06em',
-          color: GOLD_DIM,
-          textAlign: 'center',
-          marginBottom: 32,
-        }}>
-          This is more than a game. This is MECCA.
-        </p>
 
         {/* ══ CARD: Welcome Back ══ */}
         <div className="gex-s4" style={{
@@ -392,15 +379,15 @@ export default function LoginScreen() {
             </svg>
             <p style={{
               fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize: 11,
+              fontSize: 14,
               fontWeight: 300,
               fontStyle: 'italic',
               color: 'rgba(180,165,130,0.6)',
-              letterSpacing: '0.04em',
+              letterSpacing: '0.05em',
               lineHeight: 1.65,
             }}>
               Exclusively for GIM Goa students<br/>
-              <span style={{ fontSize: 10, letterSpacing: '0.06em' }}>@gim.ac.in accounts only</span>
+              <span style={{ fontSize: 12, letterSpacing: '0.06em' }}>@gim.ac.in accounts only</span>
             </p>
           </div>
 
