@@ -528,24 +528,32 @@ export default function LoginScreen() {
         }} />
       </div>
 
-       {/* Creator Signature */}
+      {/* Creator Signature */}
 <div
   style={{
     position: "fixed",
-    right: "20px",
-    bottom: "16px",
+    right: "24px",
+    bottom: "18px",
     zIndex: 9999,
     pointerEvents: "none",
-    fontFamily: "Cinzel",
-    fontSize: "11px",
-    letterSpacing: "0.28em",
-    textTransform: "uppercase",
-    color: "rgba(212,175,55,0.32)",
-    opacity: 1,
     userSelect: "none",
+
+    fontFamily: "Cinzel",
+    fontSize: "10px",
+    fontWeight: 600,
+    letterSpacing: "0.22em",
+    textTransform: "uppercase",
+
+    background: "linear-gradient(180deg, #F8DF86 0%, #D4AF37 55%, #9D6D10 100%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+
+    textShadow:
+      "0 0 3px rgba(212,175,55,0.28), 0 0 10px rgba(212,175,55,0.14)",
   }}
 >
-  MADE BY • SWAPNIL GOEL
+  DESIGNED &amp; DEVELOPED BY • SWAPNIL GOEL
 </div>
        
     </div>
