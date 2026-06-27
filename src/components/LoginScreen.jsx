@@ -172,7 +172,7 @@ export default function LoginScreen() {
   alt="MECCA"
   className="mx-auto mb-4"
   style={{
-    width: "150px",
+    width: "250px",
     height: "auto",
     filter:
       "drop-shadow(0 0 20px rgba(212,175,55,.18))",
