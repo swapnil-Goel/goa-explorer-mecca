@@ -116,11 +116,16 @@ const getCouponStatus = async () => {
   };
 };
 
-const saveCoupon = async (email, coupon) => {
+const saveCoupon = async (user, coupon) => {
   const { error } = await supabase
     .from("coupons")
     .insert({
-      email,
+      user_id: user.id,
+      email: user.email,
+      name:
+        user.user_metadata?.full_name ||
+        user.user_metadata?.name ||
+        user.email.split("@")[0],
       coupon_code: coupon,
     });
 
@@ -675,7 +680,7 @@ const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
 
     console.log("Generated code:", code);
 
-    await saveCoupon(userEmail, code);
+    await saveCoupon(user, code);
 
     console.log("Saved successfully");
 
