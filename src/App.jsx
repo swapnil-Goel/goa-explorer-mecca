@@ -647,13 +647,25 @@ const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
   }, []);
 
   useEffect(() => {
-  pickQuestion();
+  const initializeGame = async () => {
+    pickQuestion();
 
- getCouponStatus().then((status) => {
-  setCouponGeneratedCount(status.generated);
-  setCouponRemainingCount(status.remaining);
-  setTotalCoupons(status.total);
-});
+    const status = await getCouponStatus();
+
+    setCouponGeneratedCount(status.generated);
+    setCouponRemainingCount(status.remaining);
+    setTotalCoupons(status.total);
+
+    if (userEmail) {
+      const alreadyClaimed = await hasAlreadyReceivedCoupon(userEmail);
+
+      if (alreadyClaimed) {
+        setCouponsUnlocked(1);
+      }
+    }
+  };
+
+  initializeGame();
 }, []);
 
   const showToast = (msg) => {
