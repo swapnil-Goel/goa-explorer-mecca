@@ -346,83 +346,179 @@ const AnimatedCounter = ({ target, duration = 1500 }) => {
 // USER PROFILE (nav bar)
 // ═══════════════════════════════════════
 const UserProfile = ({ userName, userEmail, onLogout }) => {
+  const [open, setOpen] = React.useState(false);
+
   const initials = userName
-    .split(' ')
-    .map(w => w[0])
-    .join('')
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
     .toUpperCase()
     .slice(0, 2);
 
   return (
     <div
-      className="flex items-center gap-2 pl-3"
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
       style={{
-        borderLeft: '1px solid rgba(251,191,36,0.2)',
+        borderLeft: "1px solid rgba(251,191,36,0.2)",
+        paddingLeft: "12px",
       }}
     >
-      {/* Avatar */}
+      {/* Navbar */}
       <div
-        className="flex-none flex items-center justify-center rounded-full"
-        style={{
-          width: '30px',
-          height: '30px',
-          background: 'linear-gradient(135deg, rgba(251,191,36,0.25), rgba(217,119,6,0.15))',
-          border: '1px solid rgba(251,191,36,0.5)',
-          flexShrink: 0,
-        }}
+        className="flex items-center gap-2 cursor-pointer"
+        style={{ minHeight: "34px" }}
       >
-        <span
-          className="font-black gold-text"
-          style={{ fontFamily: 'Cinzel', fontSize: '10px', letterSpacing: '0.05em' }}
+        {/* Avatar */}
+        <div
+          className="flex items-center justify-center rounded-full"
+          style={{
+            width: "30px",
+            height: "30px",
+            background:
+              "linear-gradient(135deg, rgba(251,191,36,0.25), rgba(217,119,6,0.15))",
+            border: "1px solid rgba(251,191,36,0.45)",
+          }}
         >
-          {initials}
-        </span>
-      </div>
+          <span
+            className="gold-text font-black"
+            style={{
+              fontFamily: "Cinzel",
+              fontSize: "10px",
+            }}
+          >
+            {initials}
+          </span>
+        </div>
 
-      {/* Name + Email */}
-      <div className="flex flex-col leading-none" style={{ minWidth: 0 }}>
+        {/* Name only */}
         <span
-          className="gold-text font-bold truncate"
-          style={{ fontFamily: 'Cinzel', fontSize: '10px', letterSpacing: '0.08em', maxWidth: '110px' }}
-          title={userName}
+          className="gold-text font-bold"
+          style={{
+            fontFamily: "Cinzel",
+            fontSize: "11px",
+            letterSpacing: "0.08em",
+            maxWidth: "120px",
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+            textOverflow: "ellipsis",
+          }}
         >
           {userName}
         </span>
-        <span
-          className="text-gray-500 truncate mt-0.5"
-          style={{ fontFamily: 'Cinzel', fontSize: '8px', letterSpacing: '0.04em', maxWidth: '110px' }}
-          title={userEmail}
-        >
-          {userEmail}
-        </span>
       </div>
 
-      {/* Logout button */}
-      <button
-        onClick={onLogout}
-        className="flex-none flex items-center gap-1 px-2 py-1 rounded transition-colors"
+      {/* Dropdown */}
+      <div
         style={{
-          background: 'rgba(251,191,36,0.08)',
-          border: '1px solid rgba(251,191,36,0.25)',
-          color: '#d97706',
-          fontFamily: 'Cinzel',
-          fontSize: '8px',
-          letterSpacing: '0.1em',
-          flexShrink: 0,
+          position: "absolute",
+          top: "42px",
+          right: 0,
+          width: "260px",
+          opacity: open ? 1 : 0,
+          transform: open
+            ? "translateY(0px)"
+            : "translateY(-8px)",
+          pointerEvents: open ? "auto" : "none",
+          transition: "all .25s ease",
+          zIndex: 9999,
+
+          background:
+            "linear-gradient(180deg,#0f1f3d,#07132a)",
+
+          border: "1px solid rgba(251,191,36,.35)",
+          borderRadius: "12px",
+
+          boxShadow:
+            "0 15px 40px rgba(0,0,0,.55)",
         }}
-        onMouseEnter={e => {
-          e.currentTarget.style.background = 'rgba(251,191,36,0.18)';
-          e.currentTarget.style.color = '#fbbf24';
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.background = 'rgba(251,191,36,0.08)';
-          e.currentTarget.style.color = '#d97706';
-        }}
-        title="Sign out"
       >
-        <LogOut size={10} />
-        <span>LOGOUT</span>
-      </button>
+        <div className="p-4">
+
+          <div className="flex items-center gap-3">
+
+            <div
+              className="flex items-center justify-center rounded-full"
+              style={{
+                width: "48px",
+                height: "48px",
+                background:
+                  "linear-gradient(135deg,#fbbf24,#b45309)",
+                color: "#111827",
+                fontFamily: "Cinzel",
+                fontWeight: 700,
+              }}
+            >
+              {initials}
+            </div>
+
+            <div style={{ minWidth: 0 }}>
+              <div
+                className="gold-text font-bold"
+                style={{
+                  fontFamily: "Cinzel",
+                  fontSize: "13px",
+                }}
+              >
+                {userName}
+              </div>
+
+              <div
+                className="text-gray-400"
+                style={{
+                  fontSize: "10px",
+                  wordBreak: "break-word",
+                }}
+              >
+                {userEmail}
+              </div>
+            </div>
+          </div>
+
+          <div
+            style={{
+              margin: "14px 0",
+              height: "1px",
+              background:
+                "rgba(251,191,36,.15)",
+            }}
+          />
+
+          <button
+            onClick={onLogout}
+            className="w-full flex items-center justify-center gap-2 rounded"
+            style={{
+              padding: "10px",
+
+              background:
+                "rgba(251,191,36,.08)",
+
+              border:
+                "1px solid rgba(251,191,36,.25)",
+
+              color: "#fbbf24",
+
+              fontFamily: "Cinzel",
+
+              letterSpacing: ".08em",
+
+              transition: ".2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background =
+                "rgba(251,191,36,.18)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background =
+                "rgba(251,191,36,.08)";
+            }}
+          >
+            <LogOut size={14} />
+            LOG OUT
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
