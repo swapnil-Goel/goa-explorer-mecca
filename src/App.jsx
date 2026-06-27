@@ -1053,6 +1053,26 @@ const userEmail = user?.email || '';
 
       {/* Toast */}
       <Toast message={toast.message} visible={toast.visible} />
+     {/* Creator Signature */}
+<div
+  style={{
+    position: "fixed",
+    right: "20px",
+    bottom: "16px",
+    zIndex: 9999,
+    pointerEvents: "none",
+    fontFamily: "Cinzel",
+    fontSize: "11px",
+    letterSpacing: "0.28em",
+    textTransform: "uppercase",
+    color: "rgba(212,175,55,0.32)",
+    opacity: 1,
+    userSelect: "none",
+  }}
+>
+  MADE BY • SWAPNIL GOEL
+</div>
+      
     </div>
   );
 }
