@@ -441,7 +441,6 @@ const userName =
   'Explorer';
 
 const userEmail = user?.email || '';
-const userAvatar = user?.user_metadata?.avatar_url || null;
   const [question, setQuestion] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [currentStreak, setCurrentStreak] = useState(0);
