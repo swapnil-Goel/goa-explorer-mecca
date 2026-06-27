@@ -208,25 +208,92 @@ export default function LoginScreen() {
         </p>
 
         {/* 1999 → ∞ */}
-        <div className="gex-s2" style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          gap: 10, marginBottom: 15,
-        }}>
-          <span style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontSize: 22, fontWeight: 400,
-            letterSpacing: '0.08em', color: GOLD_DIM,
-          }}>1999</span>
-          <svg width="60" height="14" viewBox="0 0 60 14">
-            <line x1="0" y1="7" x2="46" y2="7" stroke={GOLD_MID} strokeWidth="1.2"/>
-            <polygon points="42,4 52,7 42,10" fill={GOLD_MID}/>
-          </svg>
-          <span style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontSize: 28, fontWeight: 300,
-            color: GOLD_DIM, lineHeight: 1,
-          }}>∞</span>
-        </div>
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: 22,
+  }}
+>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "18px",
+
+      padding: "12px 34px",
+
+      borderRadius: "14px",
+
+      background:
+        "linear-gradient(180deg, rgba(255,238,170,0.10), rgba(212,175,55,0.06))",
+
+      border: "1.5px solid rgba(212,175,55,0.75)",
+
+      boxShadow: `
+        0 0 6px rgba(212,175,55,.35),
+        0 0 18px rgba(212,175,55,.18),
+        inset 0 0 12px rgba(255,230,150,.08)
+      `,
+
+      backdropFilter: "blur(10px)",
+      WebkitBackdropFilter: "blur(10px)",
+
+      transition: ".3s ease",
+    }}
+  >
+    <span
+      style={{
+        fontFamily: "'Cormorant Garamond', Georgia, serif",
+        fontSize: "36px",
+        fontWeight: 600,
+        letterSpacing: ".06em",
+        color: "#F4D77A",
+        textShadow: "0 0 10px rgba(212,175,55,.45)",
+      }}
+    >
+      1999
+    </span>
+
+    <svg width="72" height="16" viewBox="0 0 72 16">
+      <defs>
+        <linearGradient id="goldArrow" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#F8E39A" />
+          <stop offset="50%" stopColor="#D4AF37" />
+          <stop offset="100%" stopColor="#FFE8A6" />
+        </linearGradient>
+      </defs>
+
+      <line
+        x1="0"
+        y1="8"
+        x2="56"
+        y2="8"
+        stroke="url(#goldArrow)"
+        strokeWidth="2"
+      />
+
+      <polygon
+        points="56,3 70,8 56,13"
+        fill="url(#goldArrow)"
+      />
+    </svg>
+
+    <span
+      style={{
+        fontFamily: "'Cormorant Garamond', Georgia, serif",
+        fontSize: "42px",
+        fontWeight: 500,
+        color: "#F4D77A",
+        lineHeight: 1,
+        textShadow: "0 0 10px rgba(212,175,55,.45)",
+      }}
+    >
+      ∞
+    </span>
+  </div>
+</div>
 
         {/* ── BIG HERO TITLE: GOA EXPLORER ── */}
         <h2 className="gex-s3" style={{
