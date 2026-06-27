@@ -90,7 +90,7 @@ const TOTAL_COUPONS = 600;
 
 const hasAlreadyReceivedCoupon = async (email) => {
   const { data, error } = await supabase
-    .from("coupon_claims")
+    .from("coupons")
     .select("id")
     .eq("email", email)
     .maybeSingle();
@@ -102,7 +102,7 @@ const hasAlreadyReceivedCoupon = async (email) => {
 
 const getCouponStatus = async () => {
   const { count, error } = await supabase
-    .from("coupon_claims")
+    .from("coupons")
     .select("*", {
       count: "exact",
       head: true,
@@ -118,7 +118,7 @@ const getCouponStatus = async () => {
 
 const saveCoupon = async (email, coupon) => {
   const { error } = await supabase
-    .from("coupon_claims")
+    .from("coupons")
     .insert({
       email,
       coupon_code: coupon,
