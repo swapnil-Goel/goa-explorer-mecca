@@ -630,6 +630,7 @@ const userEmail = user?.email || '';
   const [couponCode, setCouponCode] = useState('');
   const [couponGeneratedCount, setCouponGeneratedCount] = useState(0);
 const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
+  const [totalCoupons, setTotalCoupons] = useState(TOTAL_COUPONS);
   const [toast, setToast] = useState({ visible: false, message: '' });
   const [modal, setModal] = useState(null); // 'leaderboard' | 'howtoplay' | 'aboutmecca'
   const [mapLoaded, setMapLoaded] = useState(false);
