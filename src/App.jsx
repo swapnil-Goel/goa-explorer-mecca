@@ -76,12 +76,28 @@ const LOCATIONS = [
 const generateCoupon = () => {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   let code = 'SOUL-';
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 5; i++) {
     code += chars[Math.floor(Math.random() * chars.length)];
   }
   return code;
 };
+// ═══════════════════════════════════════
+// COUPON DATABASE HELPERS
+// ═══════════════════════════════════════
 
+const TOTAL_COUPONS = 600;
+
+const hasAlreadyReceivedCoupon = async (email) => {
+  ...
+};
+
+const getCouponStatus = async () => {
+  ...
+};
+
+const saveCoupon = async (email, coupon) => {
+  ...
+};
 // ═══════════════════════════════════════
 // SVG COMPASS ROSE (decorative)
 // ═══════════════════════════════════════
@@ -565,6 +581,8 @@ const userEmail = user?.email || '';
   const [wrongId, setWrongId] = useState(null);
   const [successModal, setSuccessModal] = useState(null);
   const [couponCode, setCouponCode] = useState('');
+  const [couponGeneratedCount, setCouponGeneratedCount] = useState(0);
+const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
   const [toast, setToast] = useState({ visible: false, message: '' });
   const [modal, setModal] = useState(null); // 'leaderboard' | 'howtoplay' | 'aboutmecca'
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -580,7 +598,14 @@ const userEmail = user?.email || '';
     setWrongId(null);
   }, []);
 
-  useEffect(() => { pickQuestion(); }, []);
+  useEffect(() => {
+  pickQuestion();
+
+  getCouponStatus().then((status) => {
+    setCouponGeneratedCount(status.generated);
+    setCouponRemainingCount(status.remaining);
+  });
+}, []);
 
   const showToast = (msg) => {
     setToast({ visible: true, message: msg });
@@ -594,12 +619,40 @@ const userEmail = user?.email || '';
       const newStreak = currentStreak + 1;
       setCorrectId(location.id);
       if (newStreak >= 3) {
-        // Streak complete — generate coupon, show modal, reset streak
-        const code = generateCoupon();
-        setCouponCode(code);
-        setSuccessModal(location);
-        setCouponsUnlocked(p => p + 1);
-        setCurrentStreak(0);
+        // Streak complete
+
+(async () => {
+
+  if (couponRemainingCount <= 0) {
+    showToast("All coupons have already been claimed.");
+    setCurrentStreak(0);
+    return;
+  }
+
+  const alreadyClaimed = await hasAlreadyReceivedCoupon(userEmail);
+
+  if (alreadyClaimed) {
+    showToast("You have already claimed your coupon.");
+    setCurrentStreak(0);
+    return;
+  }
+
+  const code = generateCoupon();
+
+  await saveCoupon(userEmail, code);
+
+  const status = await getCouponStatus();
+
+  setCouponGeneratedCount(status.generated);
+  setCouponRemainingCount(status.remaining);
+
+  setCouponCode(code);
+  setSuccessModal(location);
+
+  setCouponsUnlocked((p) => p + 1);
+  setCurrentStreak(0);
+
+})();
       } else {
         // Streak building — update streak and load next question automatically
         setCurrentStreak(newStreak);
