@@ -18,11 +18,11 @@ export default function LoginScreen() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleGoogleLogin = async () => {
+  const handleMicrosoftLogin = async () => {
     setLoading(true);
     setError(null);
     const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
+      provider: 'azure',
       options: {
         redirectTo: window.location.origin,
       },
@@ -254,7 +254,7 @@ export default function LoginScreen() {
 
         {/* Google button */}
         <button
-          onClick={handleGoogleLogin}
+          onClick={handleMicrosoftLogin}
           disabled={loading}
           style={{
             width: '100%',
@@ -302,7 +302,7 @@ export default function LoginScreen() {
               textTransform: 'uppercase',
             }}
           >
-            {loading ? 'Redirecting…' : 'Continue with Google'}
+            {loading ? 'Redirecting…' : 'Continue with GIM Account'}
           </span>
         </button>
 
