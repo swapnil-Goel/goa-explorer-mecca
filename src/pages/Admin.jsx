@@ -207,7 +207,23 @@ export default function Admin() {
   const [search, setSearch] = useState("");
   const [currentTime, setCurrentTime] = useState(new Date());
   const retryCountRef = useRef(0);
+  const [authorized, setAuthorized] = useState(false);
+const [checkingAccess, setCheckingAccess] = useState(true);
+// ── Admin authentication
+const checkAdminAccess = useCallback(async () => {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
+  const email = user?.email?.toLowerCase() || "";
+
+  if (ADMIN_EMAILS.includes(email)) {
+    setAuthorized(true);
+  }
+
+  setCheckingAccess(false);
+}, []);
+  
   // ── Data fetching ───────────────────────────
 
   const fetchData = useCallback(async () => {
@@ -237,12 +253,34 @@ export default function Admin() {
   }, []);
 
   // Initial fetch + auto-refresh every 10 s
-  useEffect(() => {
-    fetchData();
-    const interval = setInterval(fetchData, 10_000);
-    return () => clearInterval(interval);
-  }, [fetchData]);
+useEffect(() => {
+  let interval;
 
+  const initialize = async () => {
+    await checkAdminAccess();
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    const email = user?.email?.toLowerCase() || "";
+
+    if (!ADMIN_EMAILS.includes(email)) return;
+
+    fetchData();
+
+    interval = setInterval(fetchData, 10_000);
+  };
+
+  initialize();
+
+  return () => {
+    if (interval) clearInterval(interval);
+  };
+}, [fetchData, checkAdminAccess]);
+
+  initialize();
+}, [fetchData, checkAdminAccess]);
   // Live clock — ticks every second
   useEffect(() => {
     const tick = setInterval(() => setCurrentTime(new Date()), 1_000);
@@ -285,7 +323,25 @@ export default function Admin() {
   });
 
   // ── Render ─────────────────────────────────
+if (checkingAccess) {
+  return (
+    <div className="min-h-screen bg-[#081018] flex items-center justify-center text-yellow-400 text-xl">
+      Verifying admin access...
+    </div>
+  );
+}
 
+if (!authorized) {
+  return (
+    <div className="min-h-screen bg-[#081018] flex flex-col items-center justify-center">
+      <h1 className="text-6xl font-bold text-red-500">403</h1>
+      <p className="mt-4 text-2xl text-white">Access Denied</p>
+      <p className="mt-2 text-slate-400">
+        You are not authorized to access the MECCA Admin Dashboard.
+      </p>
+    </div>
+  );
+}
   return (
     <div className="min-h-screen bg-[#060d16] text-slate-100 font-sans">
       {/* Google Fonts injection for Cinzel */}
