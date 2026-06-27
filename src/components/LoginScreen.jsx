@@ -175,20 +175,6 @@ export default function LoginScreen() {
           />
         </div>
 
-        {/* ── MECCA wordmark ── */}
-        <h1 className="gex-s1" style={{
-          fontFamily: "'Cinzel', serif",
-          fontSize: 'clamp(28px, 5vw, 42px)',
-          fontWeight: 700,
-          letterSpacing: '0.35em',
-          ...goldText,
-          lineHeight: 1,
-          marginBottom: 6,
-          textAlign: 'center',
-        }}>
-          MECCA
-        </h1>
-
         {/* THE MARKETING CLUB OF GIM */}
         <p className="gex-s1" style={{
           fontFamily: "'Cinzel', serif",
