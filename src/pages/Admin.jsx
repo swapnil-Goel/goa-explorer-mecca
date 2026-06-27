@@ -279,8 +279,6 @@ useEffect(() => {
   };
 }, [fetchData, checkAdminAccess]);
 
-  initialize();
-}, [fetchData, checkAdminAccess]);
   // Live clock — ticks every second
   useEffect(() => {
     const tick = setInterval(() => setCurrentTime(new Date()), 1_000);
