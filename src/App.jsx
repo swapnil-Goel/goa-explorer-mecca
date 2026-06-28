@@ -194,29 +194,37 @@ const MapMarker = ({ location, onClick, isShaking, isCorrect, isWrong }) => {
 };
 
 // ═══════════════════════════════════════
-// MODAL – LEADERBOARD
 // ═══════════════════════════════════════
+// MODAL – LEADERBOARD (Image)
+// ═══════════════════════════════════════
+
+const LEADERBOARD_IMAGE =
+  "https://YOUR_IMAGE_LINK_HERE";
+
 const LeaderboardModal = ({ onClose }) => {
-  const entries = [
-    { rank: 1, name: "Arjun Sharma", score: 12, college: "GIM Goa" },
-    { rank: 2, name: "Priya Nair",   score: 10, college: "GIM Goa" },
-    { rank: 3, name: "Rahul Mehta",  score: 9,  college: "GIM Goa" },
-    { rank: 4, name: "Sneha Patel",  score: 8,  college: "GIM Goa" },
-    { rank: 5, name: "Vikram Das",   score: 7,  college: "GIM Goa" },
-  ];
   return (
-    <ModalWrapper onClose={onClose} title="LEADERBOARD" icon={<Trophy size={20} className="text-yellow-400" />}>
-      <div className="space-y-2 mt-4">
-        {entries.map(e => (
-          <div key={e.rank} className="flex items-center gap-3 p-2 rounded"
-            style={{ background: e.rank === 1 ? 'rgba(251,191,36,0.12)' : 'rgba(255,255,255,0.03)', border: '1px solid rgba(251,191,36,0.15)' }}>
-            <span className={`text-sm font-bold w-6 ${e.rank === 1 ? 'text-yellow-400' : e.rank === 2 ? 'text-gray-300' : e.rank === 3 ? 'text-yellow-600' : 'text-gray-500'}`}>#{e.rank}</span>
-            <span className="flex-1 text-gray-200 text-sm font-medium">{e.name}</span>
-            <span className="text-yellow-400 text-sm font-bold">{e.score} pts</span>
-          </div>
-        ))}
+    <ModalWrapper
+      onClose={onClose}
+      title="LEADERBOARD"
+      icon={<Trophy size={20} className="text-yellow-400" />}
+    >
+      <div className="mt-4">
+        <a
+          href={LEADERBOARD_IMAGE}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={LEADERBOARD_IMAGE}
+            alt="Leaderboard"
+            className="w-full rounded-xl border border-yellow-500/30 cursor-pointer hover:scale-[1.02] transition duration-300"
+          />
+        </a>
+
+        <p className="text-center text-xs text-gray-500 mt-3 italic">
+          Click the image to open it in full size.
+        </p>
       </div>
-      <p className="text-center text-xs text-gray-500 mt-4 italic">Updated every hour • Top 5 Explorers</p>
     </ModalWrapper>
   );
 };
