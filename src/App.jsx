@@ -615,10 +615,6 @@ const UserProfile = ({ userName, userEmail, onLogout }) => {
 export default function App({ session }) {
   const user = session?.user;
 
-  console.log("USER", user);
-console.log("USER METADATA", user?.user_metadata);
-console.log("APP METADATA", user?.app_metadata);
-
 const userName =
   user?.user_metadata?.name ||
   user?.user_metadata?.display_name ||
