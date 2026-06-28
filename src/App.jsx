@@ -688,7 +688,6 @@ const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
 
 (async () => {
   try {
-    console.log("===== START COUPON FLOW =====");
 
     if (couponRemainingCount <= 0) {
       showToast(`All ${totalCoupons} coupons have already been claimed.`);
@@ -696,11 +695,7 @@ const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
       return;
     }
 
-    console.log("Checking existing coupon...");
-
     const alreadyClaimed = await hasAlreadyReceivedCoupon(userEmail);
-
-    console.log("Already claimed:", alreadyClaimed);
 
     if (alreadyClaimed) {
       showToast("You have already claimed your coupon.");
@@ -710,11 +705,7 @@ const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
 
     const code = generateCoupon();
 
-    console.log("Generated code:", code);
-
     await saveCoupon(user, code);
-
-    console.log("Saved successfully");
 const status = await getCouponStatus();
 
 setCouponGeneratedCount(status.generated);
@@ -726,15 +717,7 @@ setTotalCoupons(status.total);
 
     setCouponsUnlocked((p) => p + 1);
     setCurrentStreak(0);
-
-    console.log("===== SUCCESS =====");
   } catch (err) {
-    console.error("===== COUPON ERROR =====");
-    console.error(err);
-    console.error("message:", err?.message);
-    console.error("details:", err?.details);
-    console.error("hint:", err?.hint);
-    console.error("code:", err?.code);
 
     showToast(err?.message || "Coupon generation failed.");
   }
