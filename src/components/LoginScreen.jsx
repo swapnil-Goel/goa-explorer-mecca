@@ -269,7 +269,7 @@ export default function LoginScreen() {
             textAlign: 'center',
             marginBottom: 8,
           }}>
-            Welcome Back
+            Welcome 1st Years
           </p>
 
           <p style={{
