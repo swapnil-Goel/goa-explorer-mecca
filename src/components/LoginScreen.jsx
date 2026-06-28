@@ -190,22 +190,9 @@ export default function LoginScreen() {
             fontFamily: "'Cinzel', serif", fontSize: 12,
             letterSpacing: '0.32em', color: GOLD,
             textTransform: 'uppercase', whiteSpace: 'nowrap',
-          }}>THE OLDEST CLUB OF GIM</span>
+          }}>LEGACY BEYOND YEARS</span>
           <div style={{ flex: 1, height: '1px', background: `linear-gradient(90deg, ${GOLD_MID}, transparent)` }}/>
         </div>
-
-        {/* LEGACY BEYOND YEARS */}
-        <p className="gex-s2" style={{
-          fontFamily: "'Cinzel', serif",
-          fontSize: 11,
-          letterSpacing: '0.3em',
-          color: WHITE_MID,
-          textTransform: 'uppercase',
-          textAlign: 'center',
-          marginBottom: 8,
-        }}>
-          LEGACY BEYOND YEARS
-        </p>
 
       {/* 1999 → ∞ */} <div className="gex-s2" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 15, }}> <span style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 22, fontWeight: 400, letterSpacing: '0.08em', color: GOLD_DIM, }}>1999</span> <svg width="60" height="14" viewBox="0 0 60 14"> <line x1="0" y1="7" x2="46" y2="7" stroke={GOLD_MID} strokeWidth="1.2"/> <polygon points="42,4 52,7 42,10" fill={GOLD_MID}/> </svg> <span style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 28, fontWeight: 300, color: GOLD_DIM, lineHeight: 1, }}>∞</span> </div>
         {/* ── BIG HERO TITLE: GOA EXPLORER ── */}
