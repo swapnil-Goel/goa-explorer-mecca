@@ -195,28 +195,28 @@ const MapMarker = ({ location, onClick, isShaking, isCorrect, isWrong }) => {
 
 // ═══════════════════════════════════════
 // ═══════════════════════════════════════
-// MODAL – TEAM MECCA (Image)
+// MODAL – TEAM_MECCA (Image)
 // ═══════════════════════════════════════
 
-const TEAM MECCA_IMAGE =
+const TEAM_MECCA_IMAGE =
   "/Team-Image.avif";
 
-const TEAM MECCAModal = ({ onClose }) => {
+const TEAM_MECCAModal = ({ onClose }) => {
   return (
     <ModalWrapper
       onClose={onClose}
-      title="TEAM MECCA"
+      title="TEAM_MECCA"
       icon={<Trophy size={20} className="text-yellow-400" />}
     >
       <div className="mt-4">
         <a
-          href={TEAM MECCA_IMAGE}
+          href={TEAM_MECCA_IMAGE}
           target="_blank"
           rel="noopener noreferrer"
         >
           <img
-            src={TEAM MECCA_IMAGE}
-            alt="TEAM MECCA"
+            src={TEAM_MECCA_IMAGE}
+            alt="TEAM_MECCA"
             className="w-full rounded-xl border border-yellow-500/30 cursor-pointer hover:scale-[1.02] transition duration-300"
           />
         </a>
@@ -640,7 +640,7 @@ const userEmail = user?.email || '';
 const [couponRemainingCount, setCouponRemainingCount] = useState(TOTAL_COUPONS);
   const [totalCoupons, setTotalCoupons] = useState(TOTAL_COUPONS);
   const [toast, setToast] = useState({ visible: false, message: '' });
-  const [modal, setModal] = useState(null); // 'Team MECCA' | 'howtoplay' | 'aboutmecca'
+  const [modal, setModal] = useState(null); // 'TEAM_MECCA' | 'howtoplay' | 'aboutmecca'
   const [mapLoaded, setMapLoaded] = useState(false);
   const mapRef = useRef(null);
 
@@ -829,9 +829,9 @@ setTotalCoupons(status.total);
 
         {/* Nav buttons + User Profile */}
         <div className="flex items-center gap-2">
-          <button className="nav-btn" onClick={() => setModal('TEAM MECCA')}>
+          <button className="nav-btn" onClick={() => setModal('TEAM_MECCA')}>
             <Trophy size={14} />
-            <span>TEAM MECCA</span>
+            <span>TEAM_MECCA</span>
           </button>
           <button className="nav-btn" onClick={() => setModal('howtoplay')}>
             <HelpCircle size={14} />
@@ -1182,7 +1182,7 @@ setTotalCoupons(status.total);
       </footer>
 
       {/* ═══ MODALS ═══ */}
-      {modal === 'TEAM MECCA' && <TEAM MECCAModal onClose={() => setModal(null)} />}
+      {modal === 'TEAM_MECCA' && <TEAM_MECCAModal onClose={() => setModal(null)} />}
       {modal === 'howtoplay' && <HowToPlayModal onClose={() => setModal(null)} />}
       {modal === 'aboutmecca' && <AboutMeccaModal onClose={() => setModal(null)} />}
       {successModal && (
