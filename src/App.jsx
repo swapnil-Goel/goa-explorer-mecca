@@ -199,7 +199,7 @@ const MapMarker = ({ location, onClick, isShaking, isCorrect, isWrong }) => {
 // ═══════════════════════════════════════
 
 const LEADERBOARD_IMAGE =
-  "https://YOUR_IMAGE_LINK_HERE";
+  "public/Team Image.avif";
 
 const LeaderboardModal = ({ onClose }) => {
   return (
