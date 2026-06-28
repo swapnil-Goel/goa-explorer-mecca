@@ -205,7 +205,7 @@ const LeaderboardModal = ({ onClose }) => {
   return (
     <ModalWrapper
       onClose={onClose}
-      title="LEADERBOARD"
+      title="TEAM MECCA"
       icon={<Trophy size={20} className="text-yellow-400" />}
     >
       <div className="mt-4">
